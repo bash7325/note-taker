@@ -10,23 +10,11 @@ const PORT = process.env.PORT || 3000;
 app.use(express.urlencoded({ extended: true}));
 app.use(express.json());
 app.use(express.static(__dirname));
+//routes
+require("./routes/htmlRoutes")(app);
 
 //Start Server
 app.listen(PORT, () => {
     console.log("server is listening on port:" + PORT)
 });
 
-//routes
-app.get("/", (req, res) => {
-    res.sendFile(path.join(__dirname, "Develop/public/index.html"));
-});
-
-app.get("/", (req, res) => {
-    res.sendFile(path.join(__dirname, "Develop/public/notes.html"));
-});
-
-app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "Develop/public/index.html"));
-});
-
-//api routes
