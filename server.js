@@ -9,6 +9,7 @@ const PORT = process.env.PORT || 3000;
 //express middleware
 app.use(express.urlencoded({ extended: true}));
 app.use(express.json());
+app.use(express.static(__dirname));
 
 //Start Server
 app.listen(PORT, () => {
@@ -18,5 +19,14 @@ app.listen(PORT, () => {
 //routes
 app.get("/", (req, res) => {
     res.sendFile(path.join(__dirname, "Develop/public/index.html"));
-    console.log("index")
 });
+
+app.get("/", (req, res) => {
+    res.sendFile(path.join(__dirname, "Develop/public/notes.html"));
+});
+
+app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "Develop/public/index.html"));
+});
+
+//api routes
