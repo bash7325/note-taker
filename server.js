@@ -17,6 +17,6 @@ app.listen(PORT, () => {
 
 //routes
 app.get("/", (req, res) => {
-    res.sendFile(path.join(__dirname, "/public/index/html"))
+    res.sendFile(path.join(__dirname, "Develop/public/index.html"));
     console.log("index")
-})
+});
