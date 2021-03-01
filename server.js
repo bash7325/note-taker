@@ -7,15 +7,14 @@ const path = require("path");
 const PORT = process.env.PORT || 3000;
 
 //express middleware
-app.use(express.urlencoded({ extended: true}));
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(express.static(__dirname));
+app.use(express.static("public"));
 //routes
 require("./routes/htmlRoutes")(app);
-// require("./apiRoutes")(app);
+// require("./routes/apiRoutes")(app);
 
 //Start Server
 app.listen(PORT, () => {
-    console.log("server is listening on port:" + PORT)
+  console.log("server is listening on port:" + PORT);
 });
-
