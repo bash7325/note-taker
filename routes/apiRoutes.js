@@ -1,7 +1,7 @@
 const { v4: uuidv4 } = require('uuid');
 const fs = require ("fs");
 
-module.exports = function(app) {
+module.exports = (app) => {
   
   app.get('/api/notes', (req, res) => {
     fs.readFile("db/db.json", "utf8", function(error,data) {
