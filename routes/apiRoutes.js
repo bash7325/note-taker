@@ -26,24 +26,4 @@ module.exports = function(app) {
 
     });
 
-    app.delete("/api/notes/:id", (req, res) => {
-      fs.readFile("db/db.json", "utf8", (error, data) => {
-        let noteId = req.params.id;
-        let noteData = JSON.parse(data);
-        noteData = noteData.filter(function(note) {
-            if (noteId != note.id) {
-              return true;
-            } else {
-              return false;
-            };
-        }); 
-        fs.writeFile("db/db.json", JSON.stringify(noteData), (error) => {
-          if (error)
-          throw error;
-          res.end(console.log("Note Deleted"));
-        })
-      });
-
-    });
-
 };
