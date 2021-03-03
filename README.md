@@ -31,4 +31,4 @@ An application to write and save notes.
 
 # Video Demo
 
-![Note Taker Demo](https://i.imgur.com/8CQzsvU.gifv)
+![Note Taker Demo](https://i.imgur.com/8CQzsvU.gif)
