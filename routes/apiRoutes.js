@@ -5,7 +5,7 @@ const fs = require("fs");
 module.exports = (app) => {
   //GET requests.  Read db.json file then return the saved notes as JSON
   app.get("/api/notes", (req, res) => {
-    fs.readFile("db/db.json", "utf8", function (error, data) {
+    fs.readFile("db/db.json", (error, data) => {
       res.json(JSON.parse(data));
     });
   });
@@ -13,7 +13,7 @@ module.exports = (app) => {
   app.post("/api/notes", (req, res) => {
     var newNote = req.body;
     newNote.id = uuidv4();
-    fs.readFile("db/db.json", "utf8", (error, data) => {
+    fs.readFile("db/db.json", (error, data) => {
       var data = JSON.parse(data);
       data.push(newNote);
       fs.writeFile("db/db.json", JSON.stringify(data), (error) => {
@@ -25,10 +25,10 @@ module.exports = (app) => {
   });
   //reads all the notes from db.json, removes notes that have the given id then rewrites back to db.json
   app.delete("/api/notes/:id", (req, res) => {
-    fs.readFile("db/db.json", "utf8", (error, data) => {
+    fs.readFile("db/db.json", (error, data) => {
       let noteId = req.params.id;
       let noteData = JSON.parse(data);
-      noteData = noteData.filter(function (note) {
+      noteData = noteData.filter( (note) => {
         if (noteId != note.id) {
           return true;
         } else {
